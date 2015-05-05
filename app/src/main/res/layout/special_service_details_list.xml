@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_green_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/fromTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="0.4"
+            android:textColor="@color/white_color"
+            android:paddingLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_forward" />
+
+        <TextView
+            android:id="@+id/toTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="0.4"
+            android:textColor="@color/white_color"
+            android:paddingLeft="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:textColor="@color/white_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray_color"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
+
+    <Switch
+        android:id="@+id/locationUpdateSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location update"
+        android:paddingLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="start"
+        android:onClick="buttonClickHandler"
+        android:textColor="@color/white_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/trackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rectangle_shape"
+        android:onClick="buttonClickHandler"
+        android:text="Locate Service"
+        android:drawableLeft="@drawable/ic_action_locate"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white_color"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/locateTextView"
+        android:text="Location for this service will be update to server for every minute."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textColor="@color/white_color" />
+
+    <LinearLayout
+        android:id="@+id/progressBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:text="Getting location.."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/locationStatus"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_color" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adMobView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-7965587014035488/6815262554" />
+
+</LinearLayout>

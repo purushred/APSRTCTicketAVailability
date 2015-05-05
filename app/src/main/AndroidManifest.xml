@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.smart.apsrtcbus">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SearchResultListActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.smart.apsrtcbus.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.JourneyDetailsListActivity"
+            android:parentActivityName=".activity.SearchResultListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SearchResultListActivity" />
+        </activity>
+        <activity
+            android:name=".activity.StationListActivity"
+            android:label="@string/title_activity_station_list"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.smart.apsrtcbus.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.SpecialServicesListActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.smart.apsrtcbus.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.NewSpecialServiceActivity"
+            android:configChanges="screenSize"
+            android:parentActivityName=".activity.SpecialServicesListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SpecialServicesListActivity" />
+        </activity>
+
+        <activity
+            android:name=".activity.SpecialServiceDetailsListActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.SpecialServicesListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SpecialServicesListActivity" />
+        </activity>
+
+        <activity
+            android:name=".activity.AboutSpecialServiceActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.SpecialServicesListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SpecialServicesListActivity" />
+        </activity>
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <service
+            android:name=".service.FetchAddressIntentService"
+            android:exported="false" />
+    </application>
+
+</manifest>

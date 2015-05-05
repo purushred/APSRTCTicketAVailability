@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">APSRTC Ticket Availability</string>
+    <string name="from_str">From</string>
+    <string name="to_str">To</string>
+    <string name="search_str">SEARCH</string>
+    <string name="searching">Searching..</string>
+    <string name="journey_date_validation">Journey date is older than today\'s date.</string>
+    <string name="communication_error">Communication error. Please try again.</string>
+    <string name="title_activity_station_list">StationListActivity</string>
+    <string name="no_network_connection">No Network connection.</string>
+    <string name="about_str">
+        Newly introduced special services feature helps the commuters to know if any additional services added during peak hours. This data will be added by users who are aware of such services.
+        Make use of this service and have a hassle free journey.
+    </string>
+    <string-array name="service_type">
+        <item>All</item>
+        <item>A/C</item>
+        <item>Non A/C</item>
+    </string-array>
+
+    <string-array name="service_type1">
+        <item>A/C</item>
+        <item>Non A/C</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

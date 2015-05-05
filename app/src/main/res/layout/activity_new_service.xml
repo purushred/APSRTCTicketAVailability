@@ -1,0 +1,188 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/light_green_color"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Please login with Google to add new service."
+            android:textColor="@color/white" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/serviceNoView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Service Number"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/serviceNoEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceNoView"
+                android:layout_marginRight="15dp"
+                android:height="45dp"
+                android:background="@color/white_color"
+                android:maxLines="1"
+                android:numeric="integer"
+                android:padding="5dip"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/gray_color" />
+
+            <TextView
+                android:id="@+id/fromStationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceNoEditView"
+                android:layout_marginTop="10dp"
+                android:text="From"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/fromStationEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fromStationView"
+                android:layout_marginRight="15dp"
+                android:height="45dp"
+                android:background="@color/white_color"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:padding="5dip"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/gray_color" />
+
+            <TextView
+                android:id="@+id/toStationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fromStationEditView"
+                android:layout_marginTop="10dp"
+                android:text="To"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/toStationEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toStationView"
+                android:layout_marginRight="15dp"
+                android:height="45dp"
+                android:background="@color/white_color"
+                android:gravity="center_vertical"
+                android:padding="5dip"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/gray_color" />
+
+            <TextView
+                android:id="@+id/serviceTypeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toStationEditView"
+                android:layout_marginTop="10dp"
+                android:text="Service Type"
+                android:textColor="@color/white" />
+
+            <Spinner
+                android:id="@+id/serviceTypeComboView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceTypeView"
+                android:height="45dp"
+                android:hint="A/C, Non-A/C"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/dateView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceTypeComboView"
+                android:layout_marginTop="10dp"
+                android:text="Journey Date"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/dateButtonView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateView"
+                android:background="@color/light_green_color"
+                android:drawableLeft="@drawable/ic_action_go_to_today"
+                android:onClick="buttonClickHandler"
+                android:padding="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white_color" />
+
+            <TextView
+                android:id="@+id/timeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateButtonView"
+                android:layout_marginTop="10dp"
+                android:text="Departure Time"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/timePickerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeView"
+                android:background="@color/light_green_color"
+                android:onClick="buttonClickHandler"
+                android:padding="8dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white_color" />
+
+            <Button
+                android:id="@+id/addServiceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timePickerButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/green_rectangle_shape"
+                android:onClick="buttonClickHandler"
+                android:padding="10dp"
+                android:text="Add Service"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white_color" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/light_green_color">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/fromView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From"
+            android:layout_margin="10dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/fromAuto"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:clickable="true"
+            android:background="@color/white_color"
+            android:editable="false"
+            android:gravity="center_vertical"
+            android:height="45dp"
+            android:hint="@string/from_str"
+            android:paddingLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/gray_color"
+            android:layout_below="@+id/fromView"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:id="@+id/toView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/fromAuto"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/toAuto"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/toView"
+            android:background="@color/white_color"
+            android:clickable="true"
+            android:editable="false"
+            android:gravity="center_vertical"
+            android:height="45dp"
+            android:hint="@string/to_str"
+            android:paddingLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/gray_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:id="@+id/serviceTypeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service Type"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/toAuto" />
+
+        <Spinner
+            android:id="@+id/serviceTypeComboView"
+            android:layout_below="@+id/serviceTypeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/journeyDateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Journey Date"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/serviceTypeComboView" />
+
+        <LinearLayout
+            android:id="@+id/layoutId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/journeyDateView">
+
+            <Button
+                android:id="@+id/previousDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_action_previous_item"
+                android:onClick="buttonClickHandler"
+                android:background="@null"
+                android:padding="2dp" />
+
+            <Button
+                android:id="@+id/journeyDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle_shape"
+                android:drawableLeft="@drawable/ic_action_go_to_today"
+                android:onClick="buttonClickHandler"
+                android:padding="2dp"
+                android:textColor="@color/white_color"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/nextDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_action_next_item"
+                android:onClick="buttonClickHandler"
+                android:padding="2dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutId"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/green_rectangle_shape"
+            android:onClick="buttonClickHandler"
+            android:padding="8dp"
+            android:text="@string/search_str"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white_color" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adMobView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchButton"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-7965587014035488/6815262554" />
+    </RelativeLayout>
+
+</LinearLayout>
