@@ -1,7 +1,9 @@
 package com.smart.apsrtcbus.activity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -45,7 +47,6 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
 
     /* Client used to interact with Google APIs. */
     private GoogleApiClient mGoogleApiClient;
-
 
     private SimpleDateFormat formatter = new SimpleDateFormat("EEE dd MMM, yyyy");
     private String selectedServiceType = "";
@@ -137,15 +138,15 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
             if (!mGoogleApiClient.isConnected()) {
                 mGoogleApiClient.reconnect();
             }
-            return;
-        }
-        if (resultCode == RESULT_OK) {
-            StationVO serviceInfo = (StationVO) intent.getSerializableExtra("ServiceInfo");
-            String type = intent.getStringExtra("Type");
-            if (type.equals("From")) {
-                fromView.setText(serviceInfo.toString());
-            } else if (type.equals("To")) {
-                toView.setText(serviceInfo.toString());
+        } else {
+            if (resultCode == RESULT_OK) {
+                StationVO serviceInfo = (StationVO) intent.getSerializableExtra("ServiceInfo");
+                String type = intent.getStringExtra("Type");
+                if (type.equals("From")) {
+                    fromView.setText(serviceInfo.toString());
+                } else if (type.equals("To")) {
+                    toView.setText(serviceInfo.toString());
+                }
             }
         }
     }
@@ -263,6 +264,7 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
             if (signOutMenuItem != null) {
                 signOutMenuItem.setTitle("Sign Out(" + personName + ")");
                 signOutMenuItem.setVisible(true);
+                findViewById(R.id.linearLayout1).setVisibility(View.GONE);
             }
         }
     }
@@ -286,8 +288,10 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
             } else {
                 findViewById(R.id.linearLayout).setVisibility(View.VISIBLE);
                 findViewById(R.id.relativeLayout).setVisibility(View.GONE);
-                if (signOutMenuItem != null)
+                if (signOutMenuItem != null) {
+                    findViewById(R.id.linearLayout1).setVisibility(View.VISIBLE);
                     signOutMenuItem.setVisible(false);
+                }
             }
         }
     }
@@ -303,11 +307,25 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.googleSignOut) {
-            if (mGoogleApiClient.isConnected()) {
-                Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
-                mGoogleApiClient.disconnect();
-                mGoogleApiClient.connect();
-            }
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Sign Out")
+                    .setMessage("Are you sure, You want to Sign Out?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            if (mGoogleApiClient.isConnected()) {
+                                Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+                                mGoogleApiClient.disconnect();
+                                mGoogleApiClient.connect();
+                            }
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    }).show();
+
+
             return true;
         }
         return super.onOptionsItemSelected(item);

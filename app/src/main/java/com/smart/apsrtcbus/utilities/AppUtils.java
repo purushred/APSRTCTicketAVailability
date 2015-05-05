@@ -29,9 +29,9 @@ public class AppUtils {
 
     public static final String SITE_URL = "http://apsrtconline.in/oprs-web/";
 
-    public static final String STATION_INFO_URL = "http://192.168.0.4:8080/apsrtc/";
+//    public static final String STATION_INFO_URL = "http://192.168.0.4:8080/apsrtc/";
 
-//    public static final String STATION_INFO_URL = "http://apsrtc-reddy.rhcloud.com/";
+    public static final String STATION_INFO_URL = "http://apsrtc-reddy.rhcloud.com/";
 
     // searchType=0 for onward and 1 for return journey
     public static final String SEARCH_URL = SITE_URL + "forward/booking/avail/services.do?adultMale=1&childMale=0&";

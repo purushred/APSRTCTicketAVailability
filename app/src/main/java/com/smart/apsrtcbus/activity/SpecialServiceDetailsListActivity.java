@@ -115,7 +115,6 @@ public class SpecialServiceDetailsListActivity extends ActionBarActivity impleme
                 new AlertDialog.Builder(this)
                         .setTitle("Location update")
                         .setMessage("Are you travelling in this service now?")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {

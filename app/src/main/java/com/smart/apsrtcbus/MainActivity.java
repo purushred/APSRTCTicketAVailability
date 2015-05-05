@@ -9,7 +9,9 @@ import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +32,7 @@ import com.smart.apsrtcbus.activity.SearchResultListActivity;
 import com.smart.apsrtcbus.activity.SpecialServicesListActivity;
 import com.smart.apsrtcbus.activity.StationListActivity;
 import com.smart.apsrtcbus.task.StationInfoAsyncTask;
+import com.smart.apsrtcbus.utilities.AppRater;
 import com.smart.apsrtcbus.utilities.AppUtils;
 import com.smart.apsrtcbus.vo.SearchResultVO;
 import com.smart.apsrtcbus.vo.StationVO;
@@ -121,6 +124,7 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
         AdView adView = (AdView) this.findViewById(R.id.adMobView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+        AppRater.app_launched(this);
     }
 
     private void getStationList() throws IOException {
@@ -390,7 +394,25 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
         menuItem = menu.getItem(0);
         if (isNetworkUp)
             menuItem.setVisible(true);
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.action_share);
+        // Fetch and store ShareActionProvider
+        setShareIntent((ShareActionProvider) MenuItemCompat.getActionProvider(item));
+
         return true;
+    }
+
+    // Call to update the share intent
+    private void setShareIntent(ShareActionProvider mShareActionProvider) {
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_heading_str));
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_str));
+        intent.setType("text/plain");
+        if (mShareActionProvider != null) {
+            mShareActionProvider.setShareIntent(intent);
+        }
     }
 
     @Override

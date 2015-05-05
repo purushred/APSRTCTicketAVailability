@@ -1,11 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
         android:id="@+id/action_new"
         android:icon="@drawable/ic_action_new"
-        android:title="New"
-        app:showAsAction="ifRoom"
-        android:visible="false" />
+        android:title="Special Services"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_action_share"
+        android:title="Share App"
+        app:showAsAction="always"
+        myapp:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
 </menu>
