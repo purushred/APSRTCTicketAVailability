@@ -258,14 +258,19 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
         findViewById(R.id.linearLayout).setVisibility(View.GONE);
         findViewById(R.id.relativeLayout).setVisibility(View.VISIBLE);
         mSignInClicked = false;
+        String personName = null;
+        findViewById(R.id.linearLayout1).setVisibility(View.GONE);
         if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            String personName = currentPerson.getDisplayName();
-            if (signOutMenuItem != null) {
+            personName = currentPerson.getDisplayName();
+        }
+        if (signOutMenuItem != null) {
+            if (personName != null) {
                 signOutMenuItem.setTitle("Sign Out(" + personName + ")");
-                signOutMenuItem.setVisible(true);
-                findViewById(R.id.linearLayout1).setVisibility(View.GONE);
+            } else {
+                signOutMenuItem.setTitle("Sign Out");
             }
+            signOutMenuItem.setVisible(true);
         }
     }
 
@@ -321,9 +326,9 @@ public class NewSpecialServiceActivity extends ActionBarActivity implements Date
                             }
                         }
                     }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                        }
-                    }).show();
+                public void onClick(DialogInterface dialog, int whichButton) {
+                }
+            }).show();
 
 
             return true;
